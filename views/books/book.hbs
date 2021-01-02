@@ -42,7 +42,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="products.html">
+              <a class="nav-link active" href="/book">
                 <i class="fas fa-shopping-cart"></i> Products
               </a>
             </li>
@@ -90,22 +90,22 @@
                 <thead>
                   <tr>
                     <th scope="col">&nbsp;</th>
-                    <th scope="col">PRODUCT NAME</th>
-                    <th scope="col">UNIT SOLD</th>
-                    <th scope="col">IN STOCK</th>
-                    <th scope="col">EXPIRE DATE</th>
+                    <th scope="col">TÊN SÁCH</th>
+                    <th scope="col">THỂ LOẠI</th>
+                    <th scope="col">TÁC GIẢ</th>
+                    <th scope="col">GIÁ TIỀN</th>
                     <th scope="col">&nbsp;</th>
                   </tr>
                 </thead>
                 <tbody>
                    {{#each books}}
                   <tr>
-                   
+                    
                     <th scope="row"><input type="checkbox" /></th>
                     <td class="tm-product-name">{{this.title}}</td>
-                    <td>1,450</td>
-                    <td>550</td>
-                    <td>28 March 2019</td>
+                    <td></td>
+                    <td>{{this.author}}</td>
+                    <td>{{this.basePrice}}</td>
                     <td>
                       <a href="#" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
