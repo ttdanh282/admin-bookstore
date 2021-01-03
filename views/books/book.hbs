@@ -99,11 +99,10 @@
                 </thead>
                 <tbody>
                    {{#each books}}
-                  <tr>
-                    
+                  <tr onclick =" window.location.href='/book/{{this._id}}'">
                     <th scope="row"><input type="checkbox" /></th>
                     <td class="tm-product-name">{{this.title}}</td>
-                    <td></td>
+                    <td>{{this.category.[0].name}}</td>
                     <td>{{this.author}}</td>
                     <td>{{this.basePrice}}</td>
                     <td>
