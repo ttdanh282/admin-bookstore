@@ -1,3 +1,4 @@
+    <div class="book">
     <nav class="navbar navbar-expand-xl">
       <div class="container h-100">
         <a class="navbar-brand" href="index.html">
@@ -116,6 +117,24 @@
               </table>
             </div>
             <!-- table container -->
+
+<div style="display: flex;justify-content: flex-end;">
+  <ul class="pagination">
+
+    {{#if prevPage}}
+    <li class="page-item"><a class="page-link" href="/book?page={{prevPage}}">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/book?page={{prevPage}}">{{prevPage}}</a></li>
+    {{/if}}
+    <li class="page-item"><a class="page-link" href="/book?page={{currentPage}}">{{currentPage}}</a></li>
+    {{#if nextPage}}
+    <li class="page-item"><a class="page-link" href="/book?page={{nextPage}}">Next</a></li>
+    {{/if}}
+    {{!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item"><a class="page-link" href="#">Next</a></li> --}}
+  </ul>
+</div>
             <a
               href="add-product.html"
               class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
@@ -229,4 +248,4 @@
         </div>
       </div>
     </div>
-
+</div>

@@ -1,13 +1,16 @@
 const bookService = require('../models/services/bookService');
 exports.allbook = async (req, res, next) => {
-    let books =  await bookService.list();
-    console.log(books);
-    console.log("Book dau tien"+ books[0].category[0].name);
-    res.render('books/book',{books});
+    let paginateBooks =  await bookService.list(req.query.page);
+    console.log(paginateBooks);
+    res.render('books/book',{
+        books: paginateBooks.docs,
+        prevPage: paginateBooks.prevPage,
+        nextPage: paginateBooks.nextPage,
+        currentPage: paginateBooks.page
+    });
 }
 
 exports.bookdetail = async(req,res,next) => {
     let bookDetail = await bookService.detail(req.params.id);
-
     res.render('book-detail/book-detail',{bookDetail});
  }
