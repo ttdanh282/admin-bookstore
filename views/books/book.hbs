@@ -103,7 +103,7 @@
                   <tr onclick =" window.location.href='/book/{{this._id}}'">
                     <th scope="row"><input type="checkbox" /></th>
                     <td class="tm-product-name">{{this.title}}</td>
-                    <td>{{this.category.[0].name}}</td>
+                    <td>{{this.category.name}}</td>
                     <td>{{this.author}}</td>
                     <td>{{this.basePrice}}</td>
                     <td>
@@ -137,7 +137,7 @@
   </ul>
 </div>
             <a
-              href="add-product.html"
+              href="/add"
               class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
             <button class="btn btn-primary btn-block text-uppercase">
               Delete selected products

@@ -94,7 +94,7 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="update" method="post" class="tm-edit-product-form">
+                <form action="/book/1" method="POST" class="tm-edit-product-form">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -127,23 +127,20 @@
                       class="custom-select tm-select-accounts"
                       id="category"
                     >
-                      <option>Select category</option>
-                      <option value="1" selected>New Arrival</option>
-                      <option value="2">Most Popular</option>
-                      <option value="3">Trending</option>
+                      <option>{{bookDetail.category.name}}</option>
                     </select>
                   </div>
                   <div class="row">
                       <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="expire_date"
-                            >Expire Date
+                            >Tác giả
                           </label>
                           <input
                             id="expire_date"
                             name="expire_date"
                             type="text"
-                            value="22 Oct, 2020"
+                            value="{{bookDetail.author}}"
                             class="form-control validate"
                             data-large-mode="true"
                           />
@@ -151,13 +148,13 @@
                         <div class="form-group mb-3 col-xs-12 col-sm-6">
                           <label
                             for="stock"
-                            >Units In Stock
+                            >Giá tiền
                           </label>
                           <input
                             id="stock"
                             name="stock"
                             type="text"
-                            value="19,765"
+                            value="{{bookDetail.basePrice}}"
                             class="form-control validate"
                           />
                         </div>

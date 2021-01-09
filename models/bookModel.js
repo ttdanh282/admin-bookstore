@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const mongoosePaginate = require('mongoose-paginate-v2');
+require('./categoryModel');
+
 const Schema = mongoose.Schema;
 const bookSchema = new Schema({
     _id: Schema.Types.ObjectId,
@@ -7,15 +9,10 @@ const bookSchema = new Schema({
     cover: String,
     basePrice: String,
     detail: String,
-    category: [{type: Schema.Types.ObjectId, 
-               ref: 'categories'}]
+    author: String,
+    category: {type: Schema.Types.ObjectId, 
+               ref: 'categories'}
 });
-
-const categorySchema = new Schema({
-    _id: Schema.Types.ObjectId,
-    name: String
-});
-
-mongoose.model('categories', categorySchema );
 bookSchema.plugin(mongoosePaginate);
+
 module.exports = mongoose.model('books', bookSchema );
