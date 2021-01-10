@@ -1,4 +1,6 @@
+const formidable = require('formidable');
 const bookService = require('../models/services/bookService');
+
 exports.allbook = async (req, res, next) => {
     let paginateBooks =  await bookService.list(req.query.page);
     console.log(paginateBooks);
@@ -12,8 +14,10 @@ exports.allbook = async (req, res, next) => {
 
 exports.bookdetail = async(req,res,next) => {
     let bookDetail = await bookService.detail(req.params.id);
-    console.log(bookDetail);
-    res.render('book-detail/book-detail',{bookDetail});
+    let categories = await bookService.categories();
+    // console.log(bookDetail);
+    console.log(categories);
+    res.render('book-detail/book-detail',{bookDetail, categories});
  }
 
  //RENDER TEMPLATE ADD BOOK
@@ -23,14 +27,34 @@ exports.bookdetail = async(req,res,next) => {
  }
 
  //ADD BOOK TO SERSVER
- exports.postaddbook = async(req,res,next) =>{
-    console.log(req);
-    let addBook = await bookService.postBook(req.body);
-    res.send(addBook);
+exports.postaddbook = async (req, res, next) => {
+    const form = formidable({ multiples: true });
+    form.parse(req, (err, fields, files) => {
+        if (err) {
+            next(err);
+            return;
+        }
+        bookService.postBook(fields, files.image.path).then(() => {
+            res.send("ok nha");
+        });
+    });
 }
 
 //UPDATE BOOK TO SERVER
 exports.updatebook = async(req,res,next) => {
-    let updateBookDetail= await bookService.putBook(req.body);
-    res.send(updateBookDetail);
+    let bookId = req.params.id;
+    const form = formidable({ multiples: true });
+
+     form.parse(req, (err, fields, files) => {
+        if (err) {
+            next(err);
+            return;
+        }
+        bookService.putBook(fields, bookId, files.image.path).then(() => {
+            res.send("ok nha");
+        });
+    });
+
+    // let updateBookDetail= await bookService.putBook(req.body,req.params.id);
+    // res.send(updateBookDetail);
 }
