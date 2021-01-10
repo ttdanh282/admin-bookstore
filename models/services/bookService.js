@@ -88,3 +88,11 @@ exports.postBook = async (book, image) => {
             })
         });
 }
+
+//Delete book
+exports.deleteBook = async(bookId) => {
+    return await bookModel.deleteOne({_id: ObjectId(bookId)}, function(err){
+        if(err) return handleError(err);
+        return "oke nha";
+    })  
+}

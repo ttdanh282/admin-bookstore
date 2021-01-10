@@ -100,14 +100,15 @@
                 </thead>
                 <tbody>
                    {{#each books}}
-                  <tr onclick =" window.location.href='/book/{{this._id}}'">
+                  <tr>
+                     {{!-- onclick =" window.location.href='/book/{{this._id}}'" --}}
                     <th scope="row"><input type="checkbox" /></th>
-                    <td class="tm-product-name">{{this.title}}</td>
+                    <td class="tm-product-name"><a href="/book/{{this._id}}">{{this.title}}</a></td>
                     <td>{{this.category.name}}</td>
                     <td>{{this.author}}</td>
                     <td>{{this.basePrice}}</td>
                     <td>
-                      <a href="#" class="tm-product-delete-link">
+                      <a href="/book/{{this._id}}/delete" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
                     </td>

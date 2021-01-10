@@ -54,7 +54,11 @@ exports.updatebook = async(req,res,next) => {
             res.send("ok nha");
         });
     });
+}
 
-    // let updateBookDetail= await bookService.putBook(req.body,req.params.id);
-    // res.send(updateBookDetail);
+//DELETE BOOK
+
+exports.deletebook = async(req,res,next) => {
+    await bookService.deleteBook(req.params.id);
+    res.redirect('/book');
 }

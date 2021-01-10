@@ -5,6 +5,7 @@ var indexController = require('../controllers/indexController');
 router.get('/book', bookController.allbook);
 router.get('/book/:id', bookController.bookdetail);
 router.post('/book/:id', bookController.updatebook);
+router.get('/book/:id/delete', bookController.deletebook);
 router.get('/add',bookController.getaddbook);
 router.post('/add',bookController.postaddbook);
 router.get('/', indexController.index);
