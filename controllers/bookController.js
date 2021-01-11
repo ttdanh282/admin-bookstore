@@ -1,17 +1,24 @@
 const formidable = require('formidable');
 const bookService = require('../models/services/bookService');
+const mongoose = require('mongoose');
 
+//GET ALL BOOK
 exports.allbook = async (req, res, next) => {
-    let paginateBooks =  await bookService.list(req.query.page);
+    let paginateBooks =  await bookService.list(req.query.page, req.query.cateId ? {category:mongoose.Types.ObjectId(req.query.cateId)}: {});
+    let bookCategories = await bookService.categories();
+    let authors = await bookService.getAuthors();
     console.log(paginateBooks);
     res.render('books/book',{
         books: paginateBooks.docs,
         prevPage: paginateBooks.prevPage,
         nextPage: paginateBooks.nextPage,
-        currentPage: paginateBooks.page
+        currentPage: paginateBooks.page,
+        bookCategories,
+        authors
     });
 }
 
+//GET BOOK DETAIL
 exports.bookdetail = async(req,res,next) => {
     let bookDetail = await bookService.detail(req.params.id);
     let categories = await bookService.categories();
@@ -35,7 +42,7 @@ exports.postaddbook = async (req, res, next) => {
             return;
         }
         bookService.postBook(fields, files.image.path).then(() => {
-            res.send("ok nha");
+            res.redirect("/book");
         });
     });
 }
@@ -57,8 +64,13 @@ exports.updatebook = async(req,res,next) => {
 }
 
 //DELETE BOOK
-
 exports.deletebook = async(req,res,next) => {
     await bookService.deleteBook(req.params.id);
     res.redirect('/book');
+}
+
+//DELETE MULTIIPLE BOOKS
+exports.deletemultiplebook = async(req,res,next) => {
+    await bookService.deleteMultipleBooks(req.params.ids);
+    res.send("Xoa nhieu oke");
 }

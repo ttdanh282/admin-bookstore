@@ -10,7 +10,7 @@ cloudinary.config({
 });
 
 //Paginate
-exports.list = async (pageNumber) => {
+exports.list = async (pageNumber, filter) => {
     let options = {
         page: pageNumber || 1,
         limit: 5,
@@ -19,7 +19,7 @@ exports.list = async (pageNumber) => {
             locale: 'en',
         },
     };
-    return await bookModel.paginate({}, options, function (err, resp) {
+    return await bookModel.paginate(filter, options, function (err, resp) {
         if (err) return handleError(err);
         return resp;
     })
@@ -72,6 +72,7 @@ exports.postBook = async (book, image) => {
             folder: "books",
         },
         function (error, result) {
+            if(result){
             console.log(result)
             let newBook = new bookModel({
                 _id: new ObjectId(),
@@ -85,7 +86,7 @@ exports.postBook = async (book, image) => {
             newBook.save(function (err) {
                 if (err) return handleError(err);
                 return "OKE NHA";
-            })
+            })}
         });
 }
 
@@ -96,3 +97,34 @@ exports.deleteBook = async(bookId) => {
         return "oke nha";
     })  
 }
+
+//Delete multiple book
+exports.deleteMultipleBooks = async(booksList) => {
+    await bookModel.remove({
+        _id: { $in: booksList.split(',')}
+    }, function(err,resp){
+        if(err) return handleError(err);
+        return resp;
+    })
+}
+
+//Get authors
+exports.getAuthors = async() => {
+    await bookModel.find({}, 'author', function(err, resp) {
+        if(err) return handleError(err);
+        return resp;
+    }).lean();
+}
+
+//Find by Author
+exports.findByAuthor = async(reqAuthor) => {
+    await bookModel.find({ author: reqAuthor}, function(err,resp){
+        if(err) return handleError(err);
+        return resp;
+    })
+}
+
+//Find by category
+// exports.findByCategory = async(categoryId) => {
+//     await bookModel
+// }
