@@ -8,10 +8,12 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+const passport = require('./passport/passport');
+const session = require("express-session");
 var app = express();
 
 // view engine setup
@@ -23,6 +25,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(flash());
+app.use(session({ secret: 'keyboard cat' }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(function (req, res, next) {
+  res.locals.user = req.user
+  next()
+})
+
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

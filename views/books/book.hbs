@@ -56,8 +56,8 @@
         </ul>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link d-block" href="login.html">
-              Admin, <b>Logout</b>
+            <a class="nav-link d-block" href="/logout">
+              Chào {{user.name}}, <b>Logout</b>
             </a>
           </li>
         </ul>
@@ -95,7 +95,7 @@
                   {{!-- onclick =" window.location.href='/book/{{this._id}}'" --}}
                   <th scope="row"><input onclick="event.preventDefault();location+='{{this._id}}'" type="checkbox" />
                   </th>
-                  <td class="tm-product-name"><a href="/book/{{this._id}}">{{this.title}}</a></td>
+                  <td class="tm-product-name"><a href="/book/{{this._id}}" style="color:#ffe000">{{this.title}}</a></td>
                   <td>{{this.category.name}}</td>
                   <td>{{this.author}}</td>
                   <td>{{this.basePrice}}</td>
@@ -151,7 +151,7 @@
 
                 <tr>
                   <td class="tm-product-name text-center">
-                    <a href="?cateId={{this._id}}">
+                    <a href="?cateId={{this._id}}" style="color:#ffe000">
                       {{this.name}}
                     </a>
                   </td>
