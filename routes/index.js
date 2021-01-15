@@ -3,6 +3,7 @@ var router = express.Router();
 var bookController = require('../controllers/bookController');
 var indexController = require('../controllers/indexController');
 var userController = require('../controllers/userController');
+var accountController = require('../controllers/accountController');
 var passport = require('../passport/passport');
 
 router.get('/book', bookController.allbook);
@@ -26,6 +27,8 @@ router.get('/user',userController.alluser);
 router.get('/user/:id', userController.userdetail);
 router.get('/user/:id/block', userController.blockuser);
 
+router.get('/account',accountController.userdetail);
+router.post('/account',accountController.updateuser);
 router.get('/logout', function(req, res){
     req.logout();
     res.redirect('/login');

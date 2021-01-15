@@ -27,6 +27,7 @@ exports.userdetail = async(req,res,next) => {
     res.redirect('/user');
  }
 
+
 exports.login = function(req,res,next) {
     res.render('login/login');
 }

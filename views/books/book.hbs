@@ -1,7 +1,7 @@
 <div class="book">
   <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href=/>
         <h1 class="tm-site-title mb-0">Product Admin</h1>
       </a>
       <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse"
@@ -13,14 +13,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto h-100">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href=/>
               <i class="fas fa-tachometer-alt"></i> Dashboard
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
+          <li class="nav-item">
+            <a class="nav-link" href="/user">
               <i class="fas fa-users"></i>
               <span> Khách hàng </span>
             </a>
@@ -33,7 +32,7 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="accounts.html">
+            <a class="nav-link" href="/account">
               <i class="far fa-user"></i> Accounts
             </a>
           </li>
@@ -67,12 +66,6 @@
 
 
 
-          <!-- Search form -->
-          <form class="md-form mt-0" style="
-      display: flex;" method="GET" action="">
-            <input class="form-control" type="text" placeholder="Nhập tên sách" aria-label="Search" name="title">
-            <button type="submit" class="btn btn-warning">Tìm</button>
-          </form>
           <div class="tm-product-table-container">
             <table class="table table-hover tm-table-small tm-product-table">
               <thead>
@@ -87,7 +80,6 @@
               </thead>
               <tbody>
                 {{#each books}}
-                <div>{{../currentPage}}</div>
                 <tr>
                   {{!-- onclick =" window.location.href='/book/{{this._id}}'" --}}
                   <th scope="row"><input onclick="event.preventDefault();location+='{{this._id}}'" type="checkbox" />
@@ -127,15 +119,8 @@
               <li class="page-item"><a class="page-link" href="#">Next</a></li> --}}
             </ul>
           </div>
-          <a href="/add" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
-          <a href="/book/deletemultiple/:id">
-            <a href="javascript:window.location">
-              <button class="btn btn-primary btn-block text-uppercase">
-                Delete selected products
-              </button>
-            </a>
-
-          </a>
+          <a href="/add" class="btn btn-primary btn-block text-uppercase mb-3">Thêm sách</a>
+         
         </div>
       </div>
       <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">

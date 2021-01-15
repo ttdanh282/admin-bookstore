@@ -7,7 +7,7 @@ const bookSchema = new Schema({
     _id: Schema.Types.ObjectId,
     title: String,
     cover: String,
-    basePrice: String,
+    basePrice: Number,
     detail: String,
     author: String,
     category: {type: Schema.Types.ObjectId, 
