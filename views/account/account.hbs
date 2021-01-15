@@ -85,7 +85,7 @@
             </div>
             <div class="row tm-edit-product-row">
               <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" enctype="multipart/form-data" method="POST" class="tm-edit-product-form">
+                <form action="" onsubmit="return ValidationPhoneNumber()" enctype="multipart/form-data" method="POST" class="tm-edit-product-form">
                   <div class="form-group mb-3">
                     <label
                       for="name"
@@ -118,7 +118,7 @@
                       >Số điện thoại
                     </label>
                     <input
-                      id="name"
+                      id="accounPhonetNumer"
                       name="phoneNumber"
                       type="text"
                       value="{{user.phoneNumber}}"
@@ -136,8 +136,9 @@
                       rows="5"
                       required>{{user.address}}</textarea>
                   </div>
-                 
+                 <div id="error-area" style="color:red"></div>
               </div>
+              
               <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                 <div class="tm-product-img-edit mx-auto">
                   <img src="{{userDetail.avatar}}" alt="Product image" class="img-fluid d-block mx-auto" id="product-detail-avata-preview">

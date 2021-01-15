@@ -21,3 +21,10 @@ function selectBook(selected) {
 
 //----------Books in heres
 
+// Validation
+
+function ValidationPhoneNumber(){
+  let check = document.getElementById("accounPhonetNumer").value.match(/\d/g).length===10
+  document.getElementById("error-area").innerHTML = 'SỐ ĐIỆN THOẠI PHẢI GỒM 1O SỐ';
+  return check;
+}
