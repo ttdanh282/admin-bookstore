@@ -17,3 +17,32 @@ exports.checkCredential = async (username, password) => {
 exports.getUser = (id) => {
     return userModel.findOne({_id: id});
 }
+
+exports.list = async (pageNumber) => {
+    let options = {
+        page: pageNumber || 1,
+        limit: 5,
+    };
+    return await userModel.paginate({}, options, function (err, resp) {
+        if (err) return handleError(err);
+        console.log(resp);
+        return resp;
+    })
+};
+
+//Get user detail
+exports.detail = async (id) => {
+    return await userModel
+        .findOne({ _id: ObjectId(id) }, function (err, resp) {
+            if (err) return handleError(err);
+            return resp;
+        })
+}
+
+
+//Block user 
+exports.block = async (id) => {
+    let selectedUser = await userModel.findOne({ _id: ObjectId(id) });
+    selectedUser.blocked = !selectedUser.blocked;
+    selectedUser.save();
+}

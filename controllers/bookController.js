@@ -57,9 +57,14 @@ exports.updatebook = async(req,res,next) => {
             next(err);
             return;
         }
-        bookService.putBook(fields, bookId, files.image.path).then(() => {
-            res.send("ok nha");
+        try{
+        bookService.putBook(fields, bookId, files.image.path).then((err,resp) => {
+            res.redirect('/book');
         });
+        }
+        catch(error){
+            res.status(error.response.status);
+        }
     });
 }
 

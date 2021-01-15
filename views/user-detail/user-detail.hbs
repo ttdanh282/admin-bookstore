@@ -39,7 +39,7 @@
              
             </li>
             <li class="nav-item">
-              <a class="nav-link active" href="/book">
+              <a class="nav-link active" href="/user">
                 <i class="fas fa-shopping-cart"></i> Sách
               </a>
             </li>
@@ -85,7 +85,7 @@
           <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row">
               <div class="col-12">
-                <h2 class="tm-block-title d-inline-block">Edit Product</h2>
+                <h2 class="tm-block-title d-inline-block">Thông tin chi tiết</h2>
               </div>
             </div>
             <div class="row tm-edit-product-row">
@@ -94,94 +94,68 @@
                   <div class="form-group mb-3">
                     <label
                       for="name"
-                      >Tên sách
+                      >Họ tên
                     </label>
                     <input
                       id="name"
                       name="title"
                       type="text"
-                      value="{{bookDetail.title}}"
-                      class="form-control validate"
-                    />
+                      value="{{userDetail.name}}"
+                      class="form-control validate"/>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="name"
+                      >Email
+                    </label>
+                    <input
+                      id="name"
+                      name="title"
+                      type="text"
+                      value="{{userDetail.email}}"
+                      class="form-control validate"/>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label
+                      for="name"
+                      >Số điện thoại
+                    </label>
+                    <input
+                      id="name"
+                      name="title"
+                      type="text"
+                      value="{{userDetail.phoneNumber}}"
+                      class="form-control validate"/>
                   </div>
                   <div class="form-group mb-3">
                     <label
                       for="description"
-                      >Thông tin chi tiết</label
+                      >Địa chỉ</label
                     >
                     <textarea                    
                       class="form-control validate tm-small"
                       name ="detail"
                       rows="5"
-                      required>{{bookDetail.detail}}</textarea>
+                      required>{{userDetail.address}}</textarea>
                   </div>
-                  <div class="form-group mb-3">
+                    <div class="form-group mb-3">
                     <label
-                      for="category"
-                      >Thể loại</label
-                    >
-                    <select
-                      class="custom-select tm-select-accounts"
-                      id="category"
-                      name="category">
-                      <option value ={{bookDetail.category._id}} selected>{{bookDetail.category.name}}</option>
-                      <option disabled>_________</option>
-                      {{#each categories}}
-                      <option value="{{this._id}}">{{this.name}}</option>
-                      {{/each}}
-                    </select>
-                  </div>
-                  <div class="row">
-                      <div class="form-group mb-3 col-xs-12 col-sm-6">
-                          <label
-                            for="expire_date"
-                            >Tác giả
-                          </label>
-                          <input
-                            id="expire_date"
-                            name="author"
-                            type="text"
-                            value="{{bookDetail.author}}"
-                            class="form-control validate"
-                            data-large-mode="true"
-                          />
-                        </div>
-                        <div class="form-group mb-3 col-xs-12 col-sm-6">
-                          <label
-                            for="stock"
-                            >Giá tiền
-                          </label>
-                          <input
-                            id="stock"
-                            name="basePrice"
-                            type="text"
-                            value="{{bookDetail.basePrice}}"
-                            class="form-control validate"
-                          />
-                        </div>
+                      for="name"
+                      >Trạng thái khóa
+                    </label>
+                    <input
+                      id="name"
+                      name="title"
+                      type="text"
+                      value="{{userDetail.blocked}}"
+                      class="form-control validate"/>
                   </div>
                   
               </div>
               <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
                 <div class="tm-product-img-edit mx-auto">
-                  <img src="{{bookDetail.cover}}" alt="Product image" class="img-fluid d-block mx-auto" id="product-detail-avata-preview">
-                  <i
-                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                    onclick="document.getElementById('fileInput').click();"
-                  ></i>
+                  <img src="{{userDetail.avatar}}" alt="Product image" class="img-fluid d-block mx-auto" id="product-detail-avata-preview">
                 </div>
-                <div class="custom-file mt-3 mb-3">
-                  <input id="fileInput" type="file" name ="image" onchange="loadImage(event)" style="display:none;" />
-                  <input
-                    type="button"
-                    class="btn btn-primary btn-block mx-auto"
-                    value="CHANGE IMAGE NOW"
-                    onclick="document.getElementById('fileInput').click();"
-                  />
-                </div>
-              </div>
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
               </div>
             </form>
             </div>

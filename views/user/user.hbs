@@ -1,4 +1,4 @@
-<div class="book">
+<div class="users">
   <nav class="navbar navbar-expand-xl">
     <div class="container h-100">
       <a class="navbar-brand" href="index.html">
@@ -19,7 +19,7 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            <a class="nav-link dropdown-toggle active" href="/user" id="navbarDropdown" role="button" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-users"></i>
               <span> Khách hàng </span>
@@ -27,7 +27,7 @@
             
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="/book">
+            <a class="nav-link" href="/book">
               <i class="fas fa-shopping-cart"></i> Sách
             </a>
           </li>
@@ -68,37 +68,31 @@
 
 
           <!-- Search form -->
-          <form class="md-form mt-0" style="
-      display: flex;" method="GET" action="">
-            <input class="form-control" type="text" placeholder="Nhập tên sách" aria-label="Search" name="title">
-            <button type="submit" class="btn btn-warning">Tìm</button>
-          </form>
           <div class="tm-product-table-container">
             <table class="table table-hover tm-table-small tm-product-table">
               <thead>
                 <tr>
                   <th scope="col">&nbsp;</th>
-                  <th scope="col">TÊN SÁCH</th>
-                  <th scope="col">THỂ LOẠI</th>
-                  <th scope="col">TÁC GIẢ</th>
-                  <th scope="col">GIÁ TIỀN</th>
+                  <th scope="col">TÊN</th>
+                  <th scope="col">EMAIL</th>
+                  <th scope="col">SỐ ĐIỆN THOẠI</th>
+                  <th scope="col">KHÓA</th>
                   <th scope="col">&nbsp;</th>
                 </tr>
               </thead>
               <tbody>
-                {{#each books}}
-                <div>{{../currentPage}}</div>
+                {{#each users}}
                 <tr>
-                  {{!-- onclick =" window.location.href='/book/{{this._id}}'" --}}
+                  {{!-- onclick =" window.location.href='/users/{{this._id}}'" --}}
                   <th scope="row"><input onclick="event.preventDefault();location+='{{this._id}}'" type="checkbox" />
                   </th>
-                  <td class="tm-product-name"><a href="/book/{{this._id}}" style="color:#ffe000">{{this.title}}</a></td>
-                  <td>{{this.category.name}}</td>
-                  <td>{{this.author}}</td>
-                  <td>{{this.basePrice}}</td>
+                  <td class="tm-product-name"><a href="/user/{{this._id}}" style="color:#ffe000">{{this.name}}</a></td>
+                  <td>{{this.email}}</td>
+                  <td>{{this.phoneNumber}}</td>
+                  <td>{{this.blocked}}</td>
                   <td>
-                    <a href="/book/{{this._id}}/delete" class="tm-product-delete-link">
-                      <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                    <a href="/user/{{this._id}}/block" class="tm-product-delete-link">
+                      <i class="fas fa-user-lock tm-product-delete-icon"></i>
                     </a>
                   </td>
                 </tr>
@@ -112,14 +106,14 @@
             <ul class="pagination">
 
               {{#if prevPage}}
-              <li class="page-item"><a class="page-link" href="/book?page={{prevPage}}">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="/book?page={{prevPage}}">{{prevPage}}</a></li>
+              <li class="page-item"><a class="page-link" href="/user?page={{prevPage}}">Previous</a></li>
+              <li class="page-item"><a class="page-link" href="/user?page={{prevPage}}">{{prevPage}}</a></li>
               {{/if}}
-              <li class="page-item active"><a class="page-link" href="/book?page={{currentPage}}">{{currentPage}}</a>
+              <li class="page-item active"><a class="page-link" href="/user?page={{currentPage}}">{{currentPage}}</a>
               </li>
               {{#if nextPage}}
-              <li class="page-item"><a class="page-link" href="/book?page={{nextPage}}">{{nextPage}}</a></li>
-              <li class="page-item"><a class="page-link" href="/book?page={{nextPage}}">Next</a></li>
+              <li class="page-item"><a class="page-link" href="/user?page={{nextPage}}">{{nextPage}}</a></li>
+              <li class="page-item"><a class="page-link" href="/user?page={{nextPage}}">Next</a></li>
               {{/if}}
               {{!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
               <li class="page-item"><a class="page-link" href="#">2</a></li>
@@ -127,15 +121,6 @@
               <li class="page-item"><a class="page-link" href="#">Next</a></li> --}}
             </ul>
           </div>
-          <a href="/add" class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
-          <a href="/book/deletemultiple/:id">
-            <a href="javascript:window.location">
-              <button class="btn btn-primary btn-block text-uppercase">
-                Delete selected products
-              </button>
-            </a>
-
-          </a>
         </div>
       </div>
       <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 tm-block-col">
@@ -144,7 +129,7 @@
           <div class="tm-product-table-container">
             <table class="table tm-table-small tm-product-table">
               <tbody>
-                {{#each bookCategories}}
+                {{#each usersCategories}}
 
                 <tr>
                   <td class="tm-product-name text-center">

@@ -402,7 +402,7 @@ thead {
   margin-right: 0;
 }
 .page-item.active .page-link {
-  background-color: #e9ecef;
+  background-color: #ffc107;
   border-color: #dee2e6;
   color: #000;
 }

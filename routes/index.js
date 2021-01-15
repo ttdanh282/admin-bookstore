@@ -22,6 +22,10 @@ router.post('/auth/login',
     })
 );
 
+router.get('/user',userController.alluser);
+router.get('/user/:id', userController.userdetail);
+router.get('/user/:id/block', userController.blockuser);
+
 router.get('/logout', function(req, res){
     req.logout();
     res.redirect('/login');
